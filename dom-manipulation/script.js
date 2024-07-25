@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-   // Sync quotes with the server
-   async function syncQuotes() {
+  // Sync quotes with the server
+  async function syncQuotes() {
     try {
       await fetchQuotesFromServer();
     } catch (error) {
@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const notification = document.createElement('div');
     notification.textContent = 'Data synced with the server. Conflicts resolved.';
     notification.style.color = 'green';
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
+  }
+
+  // Display a sync notification
+  function displaySyncNotification() {
+    const notification = document.createElement('div');
+    notification.textContent = 'Quotes synced with server!';
+    notification.style.color = 'blue';
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 3000);
   }
