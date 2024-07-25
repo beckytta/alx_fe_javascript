@@ -11,13 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const serverQuotes = await response.json();
       resolveConflicts(serverQuotes);
       saveQuotes();
+      displaySyncNotification(); // Notify user after syncing
     } catch (error) {
       console.error('Failed to fetch quotes from the server:', error);
     }
   }
 
-  // Sync quotes with the server
-  async function syncQuotes() {
+   // Sync quotes with the server
+   async function syncQuotes() {
     try {
       await fetchQuotesFromServer();
     } catch (error) {
